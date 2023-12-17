@@ -19,7 +19,6 @@ function App() {
   const handleDeleteItem = (todoItemName) => {
     const newTodoItems = todoItems.filter((item) => item.name != todoItemName);
     setTodoItems(newTodoItems);
-    console.log(`Item Deleted: ${todoItemName}`);
   };
   return (
     <center className="todo-container">
