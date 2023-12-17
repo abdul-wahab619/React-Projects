@@ -9,12 +9,18 @@ function App() {
   const initialTodoItems = [];
   const [todoItems, setTodoItems] = useState(initialTodoItems);
   const handleNewItem = (itemName, itemDueDate) => {
-    console.log(`New Item Added: ${itemName} Date: ${itemDueDate}`);
-    const newTodoItems = [
-      ...todoItems,
+    // setTodoItems((currValue) => {
+    //   const newTodoItems = [
+    //     ...currValue,
+    //     { name: itemName, dueDate: itemDueDate },
+    //   ];
+    //   return newTodoItems;
+    // });
+
+    setTodoItems((currValue) => [
+      ...currValue,
       { name: itemName, dueDate: itemDueDate },
-    ];
-    setTodoItems(newTodoItems);
+    ]);
   };
   const handleDeleteItem = (todoItemName) => {
     const newTodoItems = todoItems.filter((item) => item.name != todoItemName);
