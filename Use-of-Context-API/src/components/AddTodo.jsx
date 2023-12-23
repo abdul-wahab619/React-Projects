@@ -1,5 +1,5 @@
 import { useRef, useContext } from "react";
-import TodoItemsContext from "../store/todo-items-store";
+import { TodoItemsContext } from "../store/todo-items-store";
 import { BiMessageAdd } from "react-icons/bi";
 
 function AddTodo() {

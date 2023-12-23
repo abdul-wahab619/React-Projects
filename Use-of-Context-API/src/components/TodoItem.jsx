@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
-import TodoItemsContext from "../store/todo-items-store";
+import { TodoItemsContext } from "../store/todo-items-store";
 function TodoItem({ todoName, todoDate, onDeleteClick }) {
   const { deleteItem } = useContext(TodoItemsContext);
   return (

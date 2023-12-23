@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import TodoItem from "./TodoItem";
 import styles from "./TodoItems.module.css";
-import TodoItemsContext from "../store/todo-items-store";
+import { TodoItemsContext } from "../store/todo-items-store";
 
 const TodoItems = () => {
   const { todoItems } = useContext(TodoItemsContext);
@@ -9,7 +9,7 @@ const TodoItems = () => {
     <div className={styles.itemsContainer}>
       {todoItems.map((item, index) => (
         <TodoItem
-          key={index}
+          key={item.name}
           todoDate={item.dueDate}
           todoName={item.name}
         ></TodoItem>
