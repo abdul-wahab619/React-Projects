@@ -3,19 +3,17 @@ import Post from "./Post";
 import { PostList as PostListData } from "../store/post-list-store";
 import WelcomeMessage from "./WelcomeMessage";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const PostList = () => {
   const { postList, addInitalPosts } = useContext(PostListData);
-  const [fetchData, setFetchData] = useState(false);
-  if (!fetchData) {
+  useEffect(() => {
     fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
       .then((data) => {
         addInitalPosts(data.posts);
       });
-    setFetchData(true);
-  }
-  const handleGetPostsClick = () => {};
+  }, []);
   return (
     <>
       {postList.length === 0 && <WelcomeMessage />}
