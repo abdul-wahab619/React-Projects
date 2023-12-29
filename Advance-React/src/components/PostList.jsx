@@ -10,10 +10,9 @@ const PostList = () => {
   const { postList, addInitalPosts } = useContext(PostListData);
   const [fetching, setFetching] = useState(false);
 
-  const controller = new AbortController();
-  const signal = controller.signal;
-
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
     setFetching(true);
     fetch("https://dummyjson.com/posts", { signal })
       .then((res) => res.json())
