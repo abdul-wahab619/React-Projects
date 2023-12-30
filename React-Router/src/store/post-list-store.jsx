@@ -1,9 +1,13 @@
-import { useCallback } from "react";
-import { createContext, useReducer, useState, useEffect } from "react";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 export const PostList = createContext({
   postList: [],
-  fetching: false,
   addPost: () => {},
   deletePost: () => {},
 });
@@ -14,17 +18,16 @@ const postListReducer = (currPostList, action) => {
     newPostList = currPostList.filter(
       (post) => post.id !== action.payload.postId
     );
-  } else if (action.type === "ADD_POST") {
-    newPostList = [action.payload, ...currPostList];
   } else if (action.type === "ADD_INITIAL_POSTS") {
     newPostList = action.payload.posts;
+  } else if (action.type === "ADD_POST") {
+    newPostList = [action.payload, ...currPostList];
   }
   return newPostList;
 };
 
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
-  const [fetching, setFetching] = useState(false);
 
   const addPost = (post) => {
     dispatchPostList({
@@ -33,7 +36,7 @@ const PostListProvider = ({ children }) => {
     });
   };
 
-  const addInitalPosts = (posts) => {
+  const addInitialPosts = (posts) => {
     dispatchPostList({
       type: "ADD_INITIAL_POSTS",
       payload: {
@@ -54,24 +57,8 @@ const PostListProvider = ({ children }) => {
     [dispatchPostList]
   );
 
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    setFetching(true);
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitalPosts(data.posts);
-        setFetching(false);
-      });
-    return () => {
-      // console.log("Cleaning up UseEffect.");
-      controller.abort();
-    };
-  }, []);
-
   return (
-    <PostList.Provider value={{ postList, fetching, addPost, deletePost }}>
+    <PostList.Provider value={{ postList, addPost, deletePost }}>
       {children}
     </PostList.Provider>
   );
