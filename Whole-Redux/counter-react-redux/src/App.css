@@ -4,3 +4,8 @@
 .number-input {
   max-width: 120px;
 }
+.card-set {
+  max-width: 500px;
+  max-height: 500px;
+  box-shadow: 10px 10px 5px lightblue;
+}
