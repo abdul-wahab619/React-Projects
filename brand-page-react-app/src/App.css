@@ -35,6 +35,8 @@ nav ul {
   display: flex;
   list-style: none;
   gap: 24px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .hero {
