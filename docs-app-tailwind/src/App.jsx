@@ -1,12 +1,16 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className="w-full h-screen bg-slate-700">Hello Everyone</div>;
+  return (
+    <div className="relative w-full h-screen bg-slate-700">
+      <div className="absolute top-[5%] w-full py-10 flex justify-center text-zinc-800 text-4xl font-semibold">
+        Documents
+      </div>
+      <h1 className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] text-[13vh] leading-none tracking-tighter font-semibold text-zinc-900">
+        DOCS.
+      </h1>
+    </div>
+  );
 }
 
 export default App;
