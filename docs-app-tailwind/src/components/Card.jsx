@@ -2,10 +2,16 @@ import React from "react";
 import { FaRegFileAlt } from "react-icons/fa";
 import { LuDownload } from "react-icons/lu";
 import { IoClose } from "react-icons/io5";
+import { motion } from "framer-motion";
 
-const Card = ({ data }) => {
+const Card = ({ data, reference }) => {
   return (
-    <div className="relative flex-shrink-0 w-60 h-72 rounded-[45px] bg-zinc-900/90 px-8 py-10 overflow-hidden text-white p-5">
+    <motion.div
+      drag
+      dragConstraints={reference}
+      whileDrag={{ scale: 1.2 }}
+      className="relative flex-shrink-0 w-60 h-72 rounded-[45px] bg-zinc-900/90 px-8 py-10 overflow-hidden text-white p-5"
+    >
       <FaRegFileAlt />
       <p className="text-sm leading-tight mt-5 font-semibold">{data.desc} </p>
       <div className="footer absolute bottom-0 w-full left-0">
@@ -26,7 +32,7 @@ const Card = ({ data }) => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
