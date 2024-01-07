@@ -16,8 +16,13 @@ const Card = ({ data }) => {
           </span>
         </div>
         {data.tag.isOpen && (
-          <div className="tag w-full py-4 bg-green-600 flex items-center justify-center">
-            <h3 className="text-sm font-semibold">Download Now</h3>
+          <div
+            className={`tag w-full py-4 
+              ${
+                data.tag.tagColor === "blue" ? "bg-blue-600" : "bg-green-600"
+              } flex items-center justify-center`}
+          >
+            <h3 className="text-sm font-semibold">{data.tag.tagTitle}</h3>
           </div>
         )}
       </div>
